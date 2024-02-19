@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta codigoSecreto="1069806749588560000">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWeb - by Thalyson Galdino</title>
+  <link rel="stylesheet" th:href="@{/assets/w3.css}">
+  <link rel="shortcut icon" th:href="@{/assets/favicon.ico}">
+  <link rel="stylesheet" th:href="@{/assets/pico.min.css}">
+</head>
+
+<body>
+  <div class="w3-bar w3-black w3-xlarge">
+    <a href="/" class="w3-bar-item w3-button w3-mobile">Inicio</a>
+    <a href="/adicionarPessoa" class="w3-bar-item w3-button w3-mobile">Adiciona pessoa</a>
+    <a href="/listarPessoas" class="w3-bar-item w3-button w3-mobile">Listar pessoas</a>
+    <a href="/public/noticias.html" class="w3-bar-item w3-button w3-mobile w3-right">Noticias</a>
+    <a href="/public/sobre.html" class="w3-bar-item w3-button w3-mobile w3-right">Sobre o site</a>
+    <a href="/public/contato.html" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
+    <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+      <a href="index.html" class="w3-bar-item w3-button w3-mobile">Inicio</a>
+      <a href="adicionarPessoa.html" class="w3-bar-item w3-button w3-mobile">Adiciona pessoa</a>
+      <a href="listarPessoas.html" class="w3-bar-item w3-button w3-mobile">Listar pessoas</a>
+      <a href="noticias.html" class="w3-bar-item w3-button w3-mobile">Noticias</a>
+      <a href="sobre.html" class="w3-bar-item w3-button w3-mobile">Sobre o site</a>
+      <a href="contato.html" class="w3-bar-item w3-button w3-mobile">Contato</a>
+    </div>
+  </div>
+  </div>
+  <h1 class="w3-margin-left">Formulário para editar pessoas</h1>
+  <form th:action="@{/editar/{id}(id=${pessoa.id})}" method="POST" th:object="${pessoa}">
+    <div class="grid">
+      <div class="w3-margin-left">
+        <p>Seu nomezinho*:</p>
+        <input class="w3-input w3-border" id="nome" name="nome" type="text" placeholder="Nome Completo"
+          th:field="*{nome}" required>
+      </div>
+      <div class="w3-margin-left">
+        <p>e-Mail*:</p>
+        <input class="w3-input w3-border" type="text" placeholder="nome@dominio.com" th:field="*{email}" required>
+        <p>Nunca divulgaremos:)</p>
+      </div>
+      <div class="w3-margin-left">
+        <p>Data de Nacimento*:</p>
+        <input id="date" type="date" name="date" th:field="*{dataNascimento}" required />
+      </div>
+    </div>
+    <fieldset class="w3-margin-left">
+      <legend>Genêro</legend>
+      <label for="Masculino">
+        <input type="radio" name="Genêro" value="Masculino" th:field="*{genero}" required checked>
+        Masculino
+      </label>
+      <label for="Feminino">
+        <input type="radio" name="Genêro" value="Feminino" th:field="*{genero}" required>
+        Feminino
+      </label>
+      <label for="Não informar">
+        <input type="radio" name="Genêro" value="Não informar" th:field="*{genero}" required>
+        Não informar
+      </label>
+    </fieldset>
+    <div class="grid">
+      <div class="w3-margin-left">
+        <button type="submit" class="w3-button w3-block w3-blue" style="width:94%">Editar!</button>
+        <p>*Campo obrigatório</p>
+      </div>
+      <div>
+        <button type="reset" class="w3-button w3-block w3-dark-grey" style="width:94%">Limpar</button>
+      </div>
+    </div>
+</body>
+
+</html>
